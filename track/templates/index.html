@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block Title %}
+	{{webname}}-{{judul}}
+{% endblock Title %}
+
+{% block contents %}
+
+{% if user.is_authenticated %}
+	<div class="content-loggedin">
+		<h1>{{user.first_name}} {{user.last_name}}</h1>
+		<!--<p>Gunadarma University Campus D</p>-->
+		<p>Jl. Raya Sawangan Permai</p>
+		
+	</div>
+
+	<div class="">
+		<a href="{% url 'logout' %}" class="logout">Logout</a>
+	</div>
+
+	<!--<img src="../static/img/maps.jpg" id="maps"></img>-->
+	<div id="map"></div>
+{% else %}
+	<img src="../static/img/login.jpg" class="maps">
+
+	<a href="{% url 'login' %}" class="send-btn">login</a>
+
+{% endif %}
+
+
+{% endblock contents %}
